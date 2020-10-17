@@ -16,6 +16,7 @@ public class ExampleClient {
         while (true) {
             System.out.println("Witaj w pamiętniku, co chcesz zrobić: ");
             System.out.println("1. Dodać nowy wpis");
+            System.out.println("2. Odczytać istniejące wpisy");
             System.out.println("0. Zamknąć aplikacje");
 
             int response = scanner.nextInt();
@@ -24,12 +25,20 @@ public class ExampleClient {
                 case 1:
                     addNewEntry();
                     break;
+                case 2:
+                    readAllEntries();
+                    break;
                 case 0:
                     System.out.println("Twoja aplikacja jest zamykana");
                     return;
             }
         }
 
+    }
+
+    private void readAllEntries() {
+        String response = entryController.readAllEntries();
+        System.out.println("Twoje wpisy: " + response);
     }
 
     private void addNewEntry() {
